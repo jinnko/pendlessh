@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+    pendlessh:
+        build:
+            context: .
+        restart: unless-stopped
+        ports:
+            - 9191:9191
+            - 2222:2222
+        volumes:
+            - ./pendlessh.py:/app/pendlessh.py:ro
+        environment:
+            - PENDLESSH_PORT=2222
+            - PENDLESSH_MAX_DELAY=30
