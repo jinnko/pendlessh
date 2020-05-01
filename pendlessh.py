@@ -51,13 +51,13 @@ async def main(PromServer: Service):
 
 
 if __name__ == "__main__":
-    LISTEN_PORT = getenv("PENDLESSH_PORT", default=22)
+    LISTEN_PORT = getenv("PENDLESSH_PORT", default=2222)
     LISTEN_ADDRESS = getenv("PENDLESSH_ADDRESS", default="0.0.0.0")
     MESSAGE_MAX_DELAY = int(getenv("PENDLESSH_MAX_DELAY", default=30))
     PROMETHEUS_HOSTNAME = getenv("PENDLESSH_PROMETHEUS_HOSTNAME", default=gethostname())
 
     log.info(
-        f"Starting server on {LISTEN_ADDRESS}:{LISTEN_PORT}"
+        f"Starting server on {LISTEN_ADDRESS}:{LISTEN_PORT} "
         f"with {MESSAGE_MAX_DELAY}s max delay"
     )
 
