@@ -7,22 +7,26 @@ startup.
 
 ## Configuration options
 
-Configuration can be done using environment variables.
-
-Environment variable | Default | Description
---- | --- | ---
-PENDLESSH_ADDRESS | 0.0.0.0 | IP to listen on
-PENDLESSH_PORT | 2222 | Port to listen on
-PENDLESSH_MAX_DELAY | 30 | A random delay between 0 and this value between short messages
+Configuration can be done using environment variables.  See `pendlessh.env.sample` for available
+parameters.  Copy the file to `pendlessh.env` prior to starting.
 
 ## Docker
 
 When run in docker the script will run as the `nobody` user.  Ideally you'll also be using docker's
 user namespace mapping feature on your deamon.
 
+Another advantage of running within docker is you don't need to attach to port 22 and therefore
+don't need any special privileges or capabilities.  Instead the docker layer can do the port
+mapping from 22 on the host to 2222 in the container.
+
+To start the service:
+
+1. Copy `pendlessh.env.sample` to `pendlessh.env` and edit as needed
+2. Start the service with `docker-compose up -d`
+
 ## Prometheus metrics
 
 Two metrics are exposed:
 
-- pendlessh_connections_total - counter of total connections
-- pendlessh_active_connections - gauge of currently active connections
+- `pendlessh_connections_total` - counter of total connections
+- `pendlessh_active_connections` - gauge of currently active connections

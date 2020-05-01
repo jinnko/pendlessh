@@ -10,6 +10,4 @@ services:
             - 2222:2222
         volumes:
             - ./pendlessh.py:/app/pendlessh.py:ro
-        environment:
-            - PENDLESSH_PORT=2222
-            - PENDLESSH_MAX_DELAY=30
+        env_file: pendlessh.env
